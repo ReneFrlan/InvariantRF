@@ -1,0 +1,73 @@
+#mainWrap{
+    width:80%;
+    min-height:100vh;
+    /*border:1px dotted blue;*/
+    margin:15% auto;
+}
+
+.naslov{
+    text-align: center;
+    color:white; 
+    font-size:9pt;   
+}
+
+.naslov h3{
+    font-size:8pt;
+}
+
+hr{
+    width:13%;
+    border:1px solid #646464;
+}
+
+.content{
+    width: 80%;
+    height:40vh;
+    color:white;
+    overflow: hidden;
+    margin:0 auto;
+}
+
+#slike{
+    width:100%;
+    height:40vh;
+}
+.slika{
+    float:left;
+    height:27vh;
+    width:31%;
+    margin-left:2%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#prva{
+    background-image: url("slike/img1.jpg");
+}
+
+#druga{
+    background-image: url("slike/img2.jpg");
+}
+
+#treca{
+    background-image: url("slike/img3.jpg");
+}
+
+.mail{
+    width:20%;
+    height:30px;
+    color:white;
+    margin:30px auto;
+    text-align: center;
+    border:1px solid #646464;
+    border-radius: 5%;
+}
+
+.mail p {
+    font-size: 8pt;
+    margin:0;
+    padding:0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

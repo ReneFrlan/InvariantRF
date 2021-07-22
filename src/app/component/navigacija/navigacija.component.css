@@ -1,0 +1,60 @@
+#navWrap{
+    height:15vh;
+    width:100%;
+
+}
+
+#naslov{
+    width:20%;
+    height:40px;
+    font-size:11pt;
+    background-color: #232323;
+    font-family: 'Courier New', Courier, monospace;
+    border:2px solid white;    /**/
+    color:white;
+    margin-left:5%;
+    margin-top:2%;
+}
+
+#naslov p{
+  margin:0;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+nav{
+    height:15vh;
+    width:55%;
+    position: fixed;
+    top:0;
+    right:0%;
+}
+nav ul {
+    color:white;
+    padding: 0;
+    display: flex;
+    list-style: none;
+  }
+  nav li {
+    transition: background 0.3s;
+    transform: skew(-20deg); /* SKEW */
+    background:#1c1c1c;
+  }
+  
+  nav li a {
+      
+    display: block; /* block or inline-block is needed */
+    text-decoration: none;
+    padding: 5px 20px;
+    font: 13pt sans-serif;
+    transform: skew(20deg); /* UNSKEW */
+    color: inherit;
+  }
+  
+  nav li.active,
+  nav li:hover {
+    background: white;
+    color: black;
+  }

@@ -1,0 +1,39 @@
+#mainWrap{
+    width:80%;
+    min-height:50vh;
+    /*border:1px dotted blue;*/
+    margin:15% auto;
+}
+.naslov{
+    text-align: center;
+    color:white;  
+    font-size:9pt;   
+}
+
+hr{
+    width:13%;
+    border:1px solid #646464;
+}
+
+.naslov h3{
+    font-size:8pt;
+}
+
+.mail{
+    width:20%;
+    height:30px;
+    color:white;
+    margin:50px auto;
+    text-align: center;
+    border:1px solid #646464;
+    border-radius: 5%;
+}
+
+.mail p {
+    font-size: 8pt;
+    margin:0;
+    padding:0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

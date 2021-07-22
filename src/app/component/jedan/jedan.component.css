@@ -1,0 +1,70 @@
+#mainWrap{
+    width:80%;
+    min-height:100vh;
+    /*border:1px dotted blue;*/
+    margin:0 auto;
+}
+
+.naslov{
+    text-align: center;
+    color:white;  
+    font-size:9pt;   
+}
+
+hr{
+    width:13%;
+    border:1px solid #646464;
+}
+
+.naslov h3{
+    font-size:8pt;
+}
+
+.content{
+    width: 100%;
+    height:40vh;
+    color:white;
+    overflow: hidden;
+}
+
+.circle{
+    height:130px;
+    width:130px;
+    border-radius: 100%;
+    background:white;
+}
+
+.tekst{
+    margin:0;
+    height:100%;
+    width:60%;
+    padding:10px;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+    text-align: right;
+}
+
+.mail{
+    width:20%;
+    height:30px;
+    color:white;
+    margin:0 auto;
+    text-align: center;
+    border:1px solid #646464;
+    border-radius: 5%;
+}
+
+.mail p {
+    font-size: 8pt;
+    margin:0;
+    padding:0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
