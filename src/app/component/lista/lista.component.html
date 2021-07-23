@@ -1,5 +1,15 @@
 <div id="mainWrap">
   <div class="content">
+    <mat-form-field appearance="fill">
+      <mat-label>Select an episode</mat-label>
+      <mat-select [(value)]="selectedEpisode" (selectionChange)="view()">
+        <mat-option>None</mat-option>
+        <mat-option value="NEWHOPE">New Hope</mat-option>
+        <mat-option value="EMPIRE">Empire</mat-option>
+        <mat-option value="JEDI">Jedi</mat-option>
+      </mat-select>
+    </mat-form-field>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
@@ -32,10 +42,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <div class="new"><mat-icon (click)="addData()">fiber_new</mat-icon></div>
-  </div>
-    <div class="content" *ngIf="0">
-     
-      
   </div>
 </div>
 
