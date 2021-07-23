@@ -1,6 +1,6 @@
 #mainWrap{
     width:80%;
-    min-height:100vh;
+    min-height:50vh;
     /*border:1px dotted blue;*/
     margin:15% auto;
 }
@@ -22,7 +22,7 @@ hr{
 
 .content{
     width: 80%;
-    height:40vh;
+    height:25vh;
     color:white;
     overflow: hidden;
     margin:0 auto;
@@ -30,11 +30,11 @@ hr{
 
 #slike{
     width:100%;
-    height:40vh;
+    height:100px;
 }
 .slika{
     float:left;
-    height:27vh;
+    height:200px;
     width:31%;
     margin-left:2%;
     background-size: 100% 100%;

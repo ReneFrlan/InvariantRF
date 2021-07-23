@@ -3,19 +3,13 @@ import { Component, OnInit  } from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {Observable, ReplaySubject} from 'rxjs';
 import { AppData } from 'src/app/app-data';
+import { Apollo } from "apollo-angular";
 
 export interface PeriodicElement {
   id: number;
   naziv: string;
   opis: string;
 }
-/*
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id:1, naziv:'Zagreb', opis:'Najveći grad'},
-  {id:2, naziv:'Split', opis:'2. najveći grad'},
-  {id:3, naziv:'Rijeka', opis:'3. najveći grad'},
-  {id:4, naziv:'Osjek', opis:'4. najveći grad'},
-];*/
 
 @Component({
   selector: 'app-lista',
@@ -25,7 +19,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class ListaComponent implements OnInit  {
-
+  selectedEpisode = '';
   displayedColumns: string[] = ['id', 'naziv', 'opis', 'ostalo'];
   dataToDisplay = this.data.ELEMENT_DATA
   len = this.dataToDisplay.length;
@@ -62,20 +56,29 @@ export class ListaComponent implements OnInit  {
 
   indexUp(i:number){
     this.move(i, i-1)
+    this.data.createReview("EMPIRE",3,"Odlican")
 
   }
 
   indexDown(i: number){
     this.move(i, i+1)
+    
   }
 
+  view(){
+    this.data.getReviews(this.selectedEpisode)
+  }
 
-  constructor( public data: AppData) { }
+  constructor( public data: AppData, private apollo: Apollo) {
+   }
 
   ngOnInit() {
     this.data.listaLen= this.len
+    
   }
   
+
+ 
 
 }
 class ExampleDataSource extends DataSource<PeriodicElement> {
