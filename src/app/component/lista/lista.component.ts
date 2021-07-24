@@ -3,14 +3,18 @@ import { Component, OnInit  } from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {Observable, ReplaySubject} from 'rxjs';
 import { AppData } from 'src/app/app-data';
-import { Apollo } from "apollo-angular";
-
+import { FormBuilder } from '@angular/forms';
+/*
 export interface PeriodicElement {
   id: number;
   naziv: string;
   opis: string;
-}
+}*/
 
+export interface Review{
+  stars: number;
+  commentary: string;
+}
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
@@ -20,22 +24,31 @@ export interface PeriodicElement {
 
 export class ListaComponent implements OnInit  {
   selectedEpisode = '';
-  displayedColumns: string[] = ['id', 'naziv', 'opis', 'ostalo'];
+  //displayedColumns: string[] = ['id', 'naziv', 'opis', 'ostalo'];
+  displayedColumns: string[] = ['ocjena', 'komentar','ostalo'];
   dataToDisplay = this.data.ELEMENT_DATA
   len = this.dataToDisplay.length;
   dataSource = new ExampleDataSource(this.dataToDisplay);
+  new=false
 
+  reviewForm = this.formBuilder.group({
+    stars: '',
+    commentary: ''
+  });
 
-
-  addData() {
-    this.len += 1;
+  addData() {   
+    if(this.selectedEpisode!= ''){
+      this.new = true;
+    }
+    
+    /*this.len += 1;
     this.data.listaLen= this.len
     const randomElementIndex = Math.floor(Math.random() * this.data.ELEMENT_DATA.length);
     this.dataToDisplay = [
       ...this.dataToDisplay,
       this.data.ELEMENT_DATA[randomElementIndex]
     ];
-    this.dataSource.setData(this.dataToDisplay);
+    this.dataSource.setData(this.dataToDisplay);*/
   }
 
   removeData() {
@@ -56,8 +69,6 @@ export class ListaComponent implements OnInit  {
 
   indexUp(i:number){
     this.move(i, i-1)
-    this.data.createReview("EMPIRE",3,"Odlican")
-
   }
 
   indexDown(i: number){
@@ -66,36 +77,52 @@ export class ListaComponent implements OnInit  {
   }
 
   view(){
-    this.data.getReviews(this.selectedEpisode)
+      this.data.getReviews(this.selectedEpisode);
+      setTimeout(() => this.refresh(), 100);
   }
 
-  constructor( public data: AppData, private apollo: Apollo) {
+  constructor( 
+    public data: AppData, 
+    private formBuilder: FormBuilder,) {
    }
 
   ngOnInit() {
     this.data.listaLen= this.len
     
   }
-  
+  refresh(){
+    this.dataSource.setData(this.data.ELEMENT_DATA); 
+  }
 
+  ConvertStringToNumber(input: string) {
+    var numeric = Number(input);
+    return numeric;
+}
+
+  onSubmit(){
+    console.log(this.selectedEpisode+this.ConvertStringToNumber(this.reviewForm.value.stars)+this.reviewForm.value.commentary)
+    this.data.createReview(this.selectedEpisode,this.ConvertStringToNumber(this.reviewForm.value.stars),this.reviewForm.value.commentary)
+    this.new = false;
+    this.view()
+  }
  
 
 }
-class ExampleDataSource extends DataSource<PeriodicElement> {
-  private _dataStream = new ReplaySubject<PeriodicElement[]>();
+class ExampleDataSource extends DataSource<Review> {
+  private _dataStream = new ReplaySubject<Review[]>();
 
-  constructor(initialData: PeriodicElement[]) {
+  constructor(initialData: Review[]) {
     super();
     this.setData(initialData);
   }
 
-  connect(): Observable<PeriodicElement[]> {
+  connect(): Observable<Review[]> {
     return this._dataStream;
   }
 
   disconnect() {}
 
-  setData(data: PeriodicElement[]) {
+  setData(data: Review[]) {
     this._dataStream.next(data);
   }
 }

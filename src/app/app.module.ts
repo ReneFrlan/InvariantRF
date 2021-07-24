@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { AppData } from './app-data';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     GraphQLModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AppData],
   bootstrap: [AppComponent]
