@@ -40,9 +40,8 @@ export class ListaComponent implements OnInit  {
     if(this.selectedEpisode!= ''){
       this.new = true;
     }
-    
-    /*this.len += 1;
-    this.data.listaLen= this.len
+
+    /*
     const randomElementIndex = Math.floor(Math.random() * this.data.ELEMENT_DATA.length);
     this.dataToDisplay = [
       ...this.dataToDisplay,
@@ -52,8 +51,7 @@ export class ListaComponent implements OnInit  {
   }
 
   removeData() {
-    this.len-=1
-    this.data.listaLen= this.len
+    this.data.listaLen-=1
     console.log("Lista - "+ this.data.listaLen)
     this.dataToDisplay = this.dataToDisplay.slice(0, -1);
     this.dataSource.setData(this.dataToDisplay);
@@ -77,8 +75,12 @@ export class ListaComponent implements OnInit  {
   }
 
   view(){
+    if(this.selectedEpisode!="none"){
       this.data.getReviews(this.selectedEpisode);
       setTimeout(() => this.refresh(), 100);
+    }else{
+      this.selectedEpisode=''
+    }
   }
 
   constructor( 
@@ -87,7 +89,6 @@ export class ListaComponent implements OnInit  {
    }
 
   ngOnInit() {
-    this.data.listaLen= this.len
     
   }
   refresh(){
@@ -103,7 +104,8 @@ export class ListaComponent implements OnInit  {
     console.log(this.selectedEpisode+this.ConvertStringToNumber(this.reviewForm.value.stars)+this.reviewForm.value.commentary)
     this.data.createReview(this.selectedEpisode,this.ConvertStringToNumber(this.reviewForm.value.stars),this.reviewForm.value.commentary)
     this.new = false;
-    this.view()
+    this.view()    
+    this.data.listaLen+=1
   }
  
 
