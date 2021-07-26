@@ -5,3 +5,33 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 15px;
+    color: #666666;
+  }
+  .selected {
+      background-color: #eeeeee;
+  }
+  .btn-box   {
+
+    width: 100%;;
+    
+  }
+  .btn-box   div {
+
+    float: left;
+  }
+  .btn-box   div:last-child {
+
+     margin-left: 32px;
+  }
