@@ -3,28 +3,11 @@ import { Injectable } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 import { Observable, ReplaySubject } from "rxjs";
-/*
-export interface PeriodicElement {
-  id: number;
-  naziv: string;
-  opis: string;
-}*/
-
-
-
-
 
 @Injectable()
 export class AppData {
 
   constructor(private apollo: Apollo) { }
-  /*
-    public ELEMENT: PeriodicElement[] = [
-      { id: 1, naziv: 'Zagreb', opis: 'Najveći grad' },
-      { id: 2, naziv: 'Split', opis: '2. najveći grad' },
-      { id: 3, naziv: 'Rijeka', opis: '3. najveći grad' },
-      { id: 4, naziv: 'Osjek', opis: '4. najveći grad' },
-    ];*/
 
   public ELEMENT_DATA: Review[] = [];
   public listaLen: any;
@@ -35,9 +18,7 @@ export class AppData {
 
 
   getReviews(episode: string) {
-
-    console.log('data.getReviews');
-    // this.ELEMENT_DATA.length=0;
+    //console.log('data.getReviews');
     this.ELEMENT_DATA = [];
 
     this.apollo
@@ -54,9 +35,6 @@ export class AppData {
       })
       .subscribe(
         ({ data }) => {
-
-          console.log('data.reviews.load');
-
           for (let i = 0; i < data.reviews.length; i++) {
             this.ELEMENT_DATA.push({
               id : i,
@@ -73,7 +51,7 @@ export class AppData {
       );
   }
   createReview(episode: string, stars: number, review: string) {
-    console.log('data.createReview ' + episode + stars + review)
+    //console.log('data.createReview ' + episode + stars + review)
     this.apollo
       .mutate<any>({
         mutation: gql`
@@ -93,7 +71,6 @@ export class AppData {
         },
         refetchQueries: [{
           query: gql`
-              
                 query updateCache($ep: Episode!) {
                   reviews(episode: $ep){
                     stars,
@@ -107,13 +84,9 @@ export class AppData {
         }]
       })
       .subscribe((value) => {
-        console.log('data.createReview.load');
-
         setTimeout(() => this.getReviews(episode), 100);
       });
-
-    // 
-    console.log("data.review.completed")
+    //console.log("data.review.completed")
   }
 }
 

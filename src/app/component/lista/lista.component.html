@@ -1,11 +1,8 @@
 <div id="mainWrap">
   <div class="content">
     <div>
-
-
       <mat-form-field id="episodes">
         <mat-label>Odaberite epizodu</mat-label>
-
         <mat-select [(value)]="selectedEpisode" (selectionChange)="changeEpisode($event)">
           <mat-option value="none">None</mat-option>
           <mat-option value="NEWHOPE">New Hope</mat-option>
@@ -13,14 +10,10 @@
           <mat-option value="JEDI">Jedi</mat-option>
         </mat-select>
       </mat-form-field>
-
-
       <div *ngIf="selectedEpisode != ''">
-
         <button mat-icon-button (click)="addData()" color="accent">
           <mat-icon>loupe </mat-icon>
         </button>
-
       </div>
       <br />
     </div>
@@ -29,10 +22,8 @@
     <table class="mat-elevation-z8">
       <thead>
         <tr>
-
           <th>#</th>
           <th>Zvjezdice</th>
-
           <th>Komentar</th>
           <th>Ostalo</th>
         </tr>
@@ -41,7 +32,7 @@
       <tbody>
         <tr id="rowEffect" *ngFor="let r of data.reviews; let j = index;" (click)="selectReview(r)"
           [ngClass]="{'selected': r.id == selectedReview?.id}">
-          <td >{{r.id}}</td>
+          <td>{{r.id}}</td>
           <td>{{r.stars}}</td>
           <td>{{r.commentary}}</td>
           <td>
@@ -71,33 +62,6 @@
         </tr>
       </tbody>
     </table>
-    <!--
-  <table mat-table [dataSource]="data.dataSource" class="mat-elevation-z8">
-
-      Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition"  
-  
-      <ng-container matColumnDef="ocjena">
-        <th mat-header-cell *matHeaderCellDef> Zvjezdice </th>
-        <td mat-cell *matCellDef="let element"> {{element.stars}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="komentar">
-        <th mat-header-cell *matHeaderCellDef> Komentar </th>
-        <td mat-cell *matCellDef="let element"> {{element.commentary}} </td>
-      </ng-container>
-      <ng-container matColumnDef="ostalo">
-        <th mat-header-cell *matHeaderCellDef> Ostalo </th>
-        <td mat-cell *matCellDef="let element; let j = index">
-          <mat-icon (click)="indexUp(j)" *ngIf="j>0"> keyboard_arrow_up</mat-icon>
-          <mat-icon (click)="indexDown(j)" *ngIf="j!=(data.listaLen-1)">keyboard_arrow_down</mat-icon> 
-          	<mat-icon (click)="removeData(j)">remove</mat-icon></td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  -->
     <div id="addNew" *ngIf="new">
       <h2>Dodavanje novog reviewa za epizodu {{selectedEpisode}}</h2>
       <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
@@ -113,7 +77,7 @@
             <mat-option value="5">5</mat-option>
           </mat-select>
         </mat-form-field>
-        
+
 
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Leave a comment</mat-label>
